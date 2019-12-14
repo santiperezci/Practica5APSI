@@ -1,0 +1,38 @@
+
+type Query{
+    getEquipos: [Team]
+    getPartidos: [Match]
+}
+
+type Mutation{
+
+  addTeam(name:String!):Team!
+  addMatch(loc:ID!,vis:ID!,fecha:String!,resultado:String!,estado:Int!):Match!
+  updateMatch(_id:ID!,resultado:String!):Match!
+
+}
+
+type Team{
+
+  _id:ID!
+  name: String!
+
+}
+
+type Match{
+
+  _id:ID!
+  equipos:[Team]!
+  fecha:String!
+  resultado:String!
+  estado:Int!
+
+}
+
+type Subscription{
+
+  tellteam(id:String!):Match!
+  tellmatch(id:String!):Match!
+}
+
+
